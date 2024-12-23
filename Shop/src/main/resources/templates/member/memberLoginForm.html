@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+
+<!-- 사용자 CSS 추가 -->
+<!-- 사용자 CSS 추가 -->
+<th:block layout:fragment="css">
+  <style>
+    .error {
+      color: #bd2130;
+    }
+    .form-container {
+      width: 50%; /* 너비를 50%로 제한 */ /* 화면 중앙 정렬 */
+      padding: 30px 20px; /* 상단에 여백 추가 (30px) */
+      margin: 50px auto 0 auto;
+      border: 1px solid #ccc; /* 경계선 추가 */
+      border-radius: 10px; /* 경계선 둥글게 */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+      background-color: #f9f9f9; /* 배경색 추가 */
+    }
+    .form-group {
+      margin-bottom: 15px; /* 각 필드 간 여백 */
+
+    }
+  </style>
+</th:block>
+
+<div layout:fragment="content">
+
+  <form role="form" method="post" action="/members/login" class="form-container">
+    <div class="form-group">
+      <label th:for="email">E-mail</label>
+      <input type="email" name="email" class="form-control" placeholder="이메일을 입력해주세요">
+    </div>
+    <div class="form-group">
+      <label th:for="password">password</label>
+      <input type="password" name="password" id="password" class="form-control" placeholder="비밀번호 입력">
+    </div>
+    <p th:if="${loginErrorMsg}" class="error" th:text="${loginErrorMsg}"></p>
+    <button class="btn btn-secondary">로그인</button>
+    <button type="button" class="btn btn-secondary" onClick="location.href='/members/new'">회원가입</button>
+  </form>
+</div>
+</html>

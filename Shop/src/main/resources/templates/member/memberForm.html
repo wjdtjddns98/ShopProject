@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+
+<!-- 사용자 CSS 추가 -->
+<th:block layout:fragment="css">
+  <style>
+    .fieldError {
+      color: #bd2130;
+    }
+    .form-container {
+      width: 50%; /* 너비를 50%로 제한 */ /* 화면 중앙 정렬 */
+      padding: 30px 20px; /* 상단에 여백 추가 (30px) */
+      margin: 50px auto 0 auto;
+      border: 1px solid #ccc; /* 경계선 추가 */
+      border-radius: 10px; /* 경계선 둥글게 */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+      background-color: #f9f9f9; /* 배경색 추가 */
+    }
+    .form-group {
+      margin-bottom: 15px; /* 각 필드 간 여백 */
+
+    }
+  </style>
+</th:block>
+
+<!-- 사용자 스크립트 추가 -->
+<th:block layout:fragment="script">
+  <script th:inline="javascript">
+    $(document).ready(function(){
+      var errorMessage = [[${errorMessage}]];
+      if (errorMessage != null) {
+        alert(errorMessage);
+      }
+    });
+  </script>
+</th:block>
+
+<div layout:fragment="content">
+  <!-- 중앙 정렬을 위한 form-container 클래스 추가 -->
+  <form action="/members/new" role="form" method="post" th:object="${memberFormDto}" class="form-container">
+    <div class="form-group">
+      <label th:for="name">이름</label>
+      <input type="text" th:field="*{name}" class="form-control" placeholder="이름을 입력해주세요">
+      <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="fieldError">Incorrect data</p>
+    </div>
+    <div class="form-group">
+      <label th:for="email">이메일주소</label>
+      <input type="email" th:field="*{email}" class="form-control" placeholder="이메일을 입력해주세요">
+      <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="fieldError">Incorrect data</p>
+    </div>
+    <div class="form-group">
+      <label th:for="password">비밀번호</label>
+      <input type="password" th:field="*{password}" class="form-control" placeholder="비밀번호 입력">
+      <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="fieldError">Incorrect data</p>
+    </div>
+    <div class="form-group">
+      <label th:for="address">주소</label>
+      <input type="text" th:field="*{address}" class="form-control" placeholder="주소를 입력해주세요">
+      <p th:if="${#fields.hasErrors('address')}" th:errors="*{address}" class="fieldError">Incorrect data</p>
+    </div>
+    <div style="text-align: center">
+      <button type="submit" class="btn btn-secondary">가입</button>
+    </div>
+  </form>
+</div>
+
+</html>
