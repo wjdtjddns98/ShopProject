@@ -16,13 +16,11 @@ public class ItemDto {
 
     private String itemNm;
 
-    private int price;
-    private int stockNumber;
+    private Integer price;
 
     private String itemDetail;
 
-
-    private String itemsellStatus;
+    private String sellStatCd;
 
     private LocalDateTime regTime;
 

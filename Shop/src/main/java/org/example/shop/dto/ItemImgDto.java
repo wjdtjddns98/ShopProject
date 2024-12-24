@@ -11,16 +11,21 @@ import org.modelmapper.ModelMapper;
 @AllArgsConstructor
 @Builder
 public class ItemImgDto {
+
     private Long id;
+
     private String imgName;
+
     private String oriImgName;
+
     private String imgUrl;
-    private String regImgYn;
 
-   private static ModelMapper modelMapper = new ModelMapper();
+    private String repImgYn;
 
-   public static ItemImgDto entityToDto(ItemImg itemImg) {
-      return modelMapper.map(itemImg, ItemImgDto.class);
-   }
+    private static ModelMapper modelMapper = new ModelMapper();
+
+    public static ItemImgDto of(ItemImg itemImg) {
+        return modelMapper.map(itemImg,ItemImgDto.class);
+    }
 
 }

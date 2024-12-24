@@ -16,21 +16,22 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+
 public class ItemFormDto {
 
     private Long id;
 
-    @NotBlank(message ="상품명은 필수 입력 항목 입니다")
+    @NotBlank(message = "상품명은 필수 입력 값입니다.")
     private String itemNm;
 
-    @NotNull(message = "가격은 필수 입력 항목 입니다")
-    private int price;
+    @NotNull(message = "가격은 필수 입력 값입니다.")
+    private Integer price;
 
-    @NotNull(message ="수량은 필수 입력 항목 입니다")
-    private int stockNumber;
-
-    @NotBlank
+    @NotBlank(message = "상품 상세는 필수 입력 값입니다.")
     private String itemDetail;
+
+    @NotNull(message = "재고는 필수 입력 값입니다.")
+    private Integer stockNumber;
 
     private ItemSellStatus itemSellStatus;
 
@@ -44,10 +45,8 @@ public class ItemFormDto {
         return modelMapper.map(this, Item.class);
     }
 
-    public static ItemFormDto entityToDto(Item item){
-        return modelMapper.map(item, ItemFormDto.class);
+    public static ItemFormDto of(Item item){
+        return modelMapper.map(item,ItemFormDto.class);
     }
-
-
 
 }

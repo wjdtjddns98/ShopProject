@@ -1,17 +1,19 @@
 package org.example.shop.controller;
 
-import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
 import org.example.shop.dto.MemberFormDto;
-import org.example.shop.entity.Member;
 import org.example.shop.service.MemberService;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import org.example.shop.entity.Member;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import org.springframework.validation.BindingResult;
+import jakarta.validation.Valid;
 
 @RequestMapping("/members")
 @Controller

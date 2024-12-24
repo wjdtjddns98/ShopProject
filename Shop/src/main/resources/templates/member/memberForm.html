@@ -63,6 +63,7 @@
     <div style="text-align: center">
       <button type="submit" class="btn btn-secondary">가입</button>
     </div>
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
   </form>
 </div>
 
